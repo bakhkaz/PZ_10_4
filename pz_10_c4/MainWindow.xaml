@@ -1,0 +1,71 @@
+﻿<Window x:Class="pz_10_c4.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:pz_10_c4"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="727">
+    <Grid Margin="0,0,10,0" Width="NaN">
+        <Button x:Name="Save" 
+            Content="Добавить" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top"
+            Click="Save_Click" Width="110" Margin="295,190,0,0"/>
+        <Button x:Name="Delete" 
+            Content="Удалить" 
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top" 
+            Margin="295,258,0,0"
+            Click="Delete_Click" Width="110"/>
+        <TextBox x:Name="TextNotes"
+            HorizontalAlignment="Left" 
+            VerticalAlignment="Top"
+            Margin="295,130,0,0" 
+            Width="110"
+            Height="47"/>
+        <WrapPanel HorizontalAlignment="Left" 
+            Height="405" 
+            Width="280" 
+            Background="LightGreen" 
+            VerticalAlignment="Top" Margin="10,17,0,0">
+            <TextBlock Text="Задачи"/>
+            <ListBox 
+                HorizontalContentAlignment="Stretch" 
+                MouseDoubleClick="Online_MouseDoubleClick"
+                x:Name="Online" Height="387" Width="280">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel MaxWidth="270">
+                            <TextBlock HorizontalAlignment="Stretch" 
+                                TextWrapping="Wrap" 
+                                Foreground="Brown"  
+                                Text= "{Binding Name}"/>
+                            <TextBlock Foreground ="Pink"  HorizontalAlignment="Right" Text="{Binding status}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </WrapPanel>
+        <WrapPanel HorizontalAlignment="Left" Height="405" Width="300" Background="LightGreen" VerticalAlignment="Top" Margin="410,17,0,0">
+            <TextBlock Text="Выполненные задачи"/>
+            <ListBox 
+                HorizontalContentAlignment="Stretch"
+                SelectionMode="Multiple"
+                x:Name="Offline" Height="387" Width="300">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel MaxWidth="270">
+                            <TextBlock HorizontalAlignment="Stretch" 
+                                TextWrapping="Wrap" 
+                                Foreground="SandyBrown"  
+                                Text= "{Binding Name}"/>
+                            <TextBlock Foreground ="Pink"  HorizontalAlignment="Right" Text="{Binding status}" />
+                        </StackPanel>
+                    </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </WrapPanel>
+
+    </Grid>
+</Window>
